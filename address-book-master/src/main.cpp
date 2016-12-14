@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     SQLiteDataSource dSrc("contacts.db", true);  
     AddressBookController myBook(dSrc);
-    app.setStyleSheet("QMainWindow{background-image:url(D:/theo.jpg)}");
+    app.setStyleSheet("QMainWindow{background-image:url(D:/a.jpg)}");
     myBook.start();
     return app.exec();
 }

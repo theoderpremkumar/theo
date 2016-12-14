@@ -1,8 +1,9 @@
 #include <QList>
-
+#include<QMessageBox>
 #include "addressbookcontroller.h"
 #include "contact.h"
 #include "qtcontactlist.h"
+
 
 #include <string>
 
@@ -89,4 +90,25 @@ Contact::ContactId QtContactList::getSelectedContactId()
     }
     
     return selectedContactId;
+}
+Contact::ContactId QtContactList::findList(std::string name)
+{
+    QMessageBox errormessage;
+    std::string  nameforfind = name;
+    Contact::ContactRecordSet allContacts;
+    dataSource.getAllContacts(allContacts);
+    Contact::ContactRecordSet::const_iterator contactrecordsetIterator;
+    for(contactrecordsetIterator=allContacts.begin();contactrecordsetIterator!=allContacts.end();contactrecordsetIterator++)
+    {
+        std::string ListItemfirstName = contactrecordsetIterator->firstName.c_str();
+        if(nameforfind==ListItemfirstName)
+        {
+            Contact::ContactId findcontactid = contactrecordsetIterator->id;
+            return findcontactid;
+        }
+    else
+            errormessage.setText("No such content");
+            errormessage.exec();
+    }
+
 }

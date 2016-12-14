@@ -47,10 +47,16 @@ void QtAddressBookGUI::createWidgets()
     editContactButton->setIcon(QIcon("D:/images.jpg"));
     deleteContactButton = new QPushButton("Delete");
     deleteContactButton->setIcon(QIcon("D:/index.jpg"));
+    findContactButton = new QPushButton("find");
+    findContactField = new QLineEdit("Enter the name to find");
+    findContactButton->setIcon(QIcon("D:/imag.jpg"));
+
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(newContactButton);
     buttonLayout->addWidget(editContactButton);
     buttonLayout->addWidget(deleteContactButton);
+    buttonLayout->addWidget(findContactField);
+    buttonLayout->addWidget(findContactButton);
 
     QVBoxLayout *rightSideLayout = new QVBoxLayout();
     rightSideLayout->addWidget(detailView);
@@ -74,6 +80,9 @@ void QtAddressBookGUI::createWidgets()
 
     connect(editContactButton, SIGNAL(clicked()),
             this, SLOT(editContact()));
+
+    connect(findContactButton, SIGNAL(clicked()),
+             this, SLOT(findContact()));
 
     //tell the sub-widgets to refresh their data from
     //
@@ -208,4 +217,11 @@ void QtAddressBookGUI::deleteContact()
         return;
     }
 }
+void QtAddressBookGUI::findContact()
+{
+    std::string nameTofind=findContactField->text().toStdString();
 
+    Contact::ContactId idOffindItem= list->findList(nameTofind);
+    detailView->clear();
+    detailView->displayContact(idOffindItem);
+}
