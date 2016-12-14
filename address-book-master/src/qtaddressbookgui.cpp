@@ -44,12 +44,12 @@ void QtAddressBookGUI::createWidgets()
     newContactButton = new QPushButton("New Contact");
     newContactButton->setIcon(QIcon("D:/image.jpg"));
     editContactButton = new QPushButton("Edit");
-    editContactButton->setIcon(QIcon("D:/images.jpg"));
+    editContactButton->setIcon(QIcon("D:/i.jpg"));
     deleteContactButton = new QPushButton("Delete");
     deleteContactButton->setIcon(QIcon("D:/index.jpg"));
     findContactButton = new QPushButton("find");
     findContactField = new QLineEdit("Enter the name to find");
-    findContactButton->setIcon(QIcon("D:/imag.jpg"));
+    findContactButton->setIcon(QIcon("D:/imag.png"));
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(newContactButton);
